@@ -18,9 +18,9 @@ xgboost		3.0.0
 BioEmu is not a strict dependency of this repo - it's just what I recommend installing if you want good ensembles as input. It's a pretty easy install on most machines, though it does require cuda>=12 to use the md version (which you do need to have installed). Refer to their github for more info:
 https://github.com/microsoft/bioemu
 
-xgboost is also not actually required - I report version here to be thorough, but no part of the program requires it.
+xgboost is never actually imported but it needs to be there for the unpickling of the models to work.
 
-MDAnalysis can also be avoided if you use a PDB ensemble, rather than the BioEmu one (though again, I do recommend BioEmu). I might write a workaround later to avoid the MDAnalysis install.
+MDAnalysis can be avoided if you use a PDB ensemble, rather than the BioEmu one (though again, I do recommend BioEmu). I might write a workaround later to avoid the MDAnalysis install.
 
 To start you need to generate features. Go to the home directory. If you are using BioEmu, run this:
 python scripts/run_pipeline_batch_individualDSSP_hbond_withSS_predictOnly.py --input-dir input_xtc --output-dir feats

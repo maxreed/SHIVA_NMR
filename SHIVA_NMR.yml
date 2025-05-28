@@ -10,3 +10,5 @@ dependencies:
   - openmm=8.2
   - mdanalysis=2.9.0
   - mdtraj=1.10.3
+  - xgboost=3.0.0
+
