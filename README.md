@@ -60,13 +60,17 @@ From the repository root:
 * **With BioEmu (XTC input):**
 
   ```bash
-python scripts/run_pipeline_batch_individualDSSP_hbond_withSS_predictOnly.py --input-dir input_xtc --output-dir feats
+  python scripts/run_pipeline_batch_individualDSSP_hbond_withSS_predictOnly.py \
+    --input-dir input_xtc \
+    --output-dir feats
   ```
 
 * **With PDB directory:**
 
   ```bash
-python scripts/run_pipeline_batch_individualDSSP_hbond_withSS_predictOnly_pdbDir.py --input-dir input_pdb --output-dir feats
+  python scripts/run_pipeline_batch_individualDSSP_hbond_withSS_predictOnly_pdbDir.py \
+    --input-dir input_pdb \
+    --output-dir feats
   ```
 
 ### 2. Process features & predict
