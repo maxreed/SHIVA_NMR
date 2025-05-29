@@ -1,7 +1,10 @@
 # SHIVA
 
 **Substate-Handling Iterative Vector Assessment**
+
 *A pipeline for predicting amide hydrogen chemical shifts.*
+
+*SHIVA, lord of the dance, estimates chemical shift by taking into account the "dance" between conformational states.*
 
 ---
 
