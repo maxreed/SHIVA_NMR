@@ -20,6 +20,7 @@ from typing import Generator, List, Tuple
 
 from openmm.app import PDBFile, Modeller, ForceField, Topology
 from openmm.vec3 import Vec3
+from openmm.app import element as elem
 
 
 # --------------------------------------------------------------------------- #
@@ -29,9 +30,14 @@ def _load_forcefield(ffxml: str | None) -> ForceField:
     """Load chosen FF (default Amber 99SB, no water model)."""
     return ForceField(ffxml) if ffxml else ForceField("amber99sb.xml")
 
-
+# excludes hydrogens because the protocol for adding hydrogens can result in different protonation states.
 def _atom_signature(top: Topology) -> tuple:
-    return tuple((a.name, int(a.residue.id), a.residue.name) for a in top.atoms())
+    # skip all H atoms
+    return tuple(
+        (a.name, int(a.residue.id), a.residue.name)
+        for a in top.atoms()
+        if a.element != elem.hydrogen
+    )
 
 
 def _augment_model(
