@@ -92,6 +92,14 @@ python scripts/xgboost_aggregate_and_eval.py test_predictions_all.csv
 
 After completion, your final per-state predictions will be in `test_predictions_all.csv` with averaged predictions in `test_after_avg.csv`.
 
+UPDATE: Amide nitrogen prediction is now live. Identical features are used, meaning after splitting by secondary structure type only the following commands are required:
+
+```bash
+python scripts/xgboost_loadedModel_predOnly_n_all.py
+python scripts/append_HEC_results.py test_predictions_n_
+python scripts/xgboost_aggregate_and_eval.py test_predictions_n_all.csv --save_name test_after_avg_n.csv
+```
+
 > **Note:** All subdirectories under `--input-dir` will be processed.
 
 ---
