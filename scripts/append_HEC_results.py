@@ -1,11 +1,14 @@
 import csv
 import os
+import sys
 
-def append_csvs(output_filename='test_predictions_all.csv'):
+def append_csvs(base_name):
+    output_filename=base_name + 'all.csv'
+
     # Names of the CSV files to append
-    input_files = ['test_predictions_C.csv',
-                   'test_predictions_E.csv',
-                   'test_predictions_H.csv']
+    input_files = [base_name + 'C.csv',
+                   base_name + 'E.csv',
+                   base_name + 'H.csv']
 
     # Check that each input file exists
     for fname in input_files:
@@ -34,4 +37,5 @@ def append_csvs(output_filename='test_predictions_all.csv'):
     print(f"All files appended into '{output_filename}'.")
 
 if __name__ == '__main__':
-    append_csvs()
+    base_name  = sys.argv[1] if len(sys.argv) > 1 else "test_predictions_"
+    append_csvs(base_name)

@@ -2,7 +2,7 @@
 import argparse
 import pandas as pd
 
-def main(csv_path):
+def main(csv_path, save_name):
     # 1. Load data
     df = pd.read_csv(csv_path)
     # Expect columns: source_id, actual, predicted
@@ -22,7 +22,7 @@ def main(csv_path):
     # 4. Compute metrics
     y_pred = grouped['predicted_mean']
 
-    grouped.to_csv("test_after_avg.csv")
+    grouped.to_csv(save_name)
     print("Averaged over sub-states.")
 
 if __name__ == "__main__":
@@ -33,5 +33,9 @@ if __name__ == "__main__":
         "csv_path",
         help="Path to test_predictions.csv"
     )
+    parser.add_argument(
+        "--save_name", default='test_after_avg.csv',
+        help="Name for averaged results csv file."
+    )
     args = parser.parse_args()
-    main(args.csv_path)
+    main(args.csv_path, args.save_name)
